@@ -13,7 +13,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       <div className="fixed bottom-0 top-0 hidden h-full w-56 flex-col md:flex">
         <Sidebar />
       </div>
-      <main className="h-full md:pl-56 ">{children}</main>
+      <main className="h-full pt-[80px] md:pl-56 ">{children}</main>
     </div>
   );
 };
