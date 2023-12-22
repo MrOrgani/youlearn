@@ -15,13 +15,13 @@ model Course {
   id String @id @default(uuid())
   userId String
   title String @db.Text
-  description String @db.Text
+  description String? @db.Text
   imageUrl String? @db.Text
-  price Float
+  price Float?
   isPublished Boolean @default(false)
 
-  categoryId  String
-  category Category @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  category Category? @relation(fields: [categoryId], references: [id])
 
   attachement Attachement[]
 
