@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Course } from "@prisma/client";
 import axios from "axios";
 import { PenIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -21,9 +22,7 @@ import toast from "react-hot-toast";
 import * as z from "zod";
 
 interface TitleFormProps {
-  initialData: {
-    title: string;
-  };
+  initialData: Course;
   courseId: string;
 }
 
