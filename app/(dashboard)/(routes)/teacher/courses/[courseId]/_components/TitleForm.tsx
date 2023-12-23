@@ -1,11 +1,6 @@
 "use client";
 
-import React, { use } from "react";
-
-import * as z from "zod";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -16,57 +11,76 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { PenIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import * as z from "zod";
+
+interface TitleFormProps {
+  initialData: {
+    title: string;
+  };
+  courseId: string;
+}
 
 const formSchema = z.object({
-  title: z
-    .string()
-    .min(1, { message: "The title must be 1 letter at least" })
-    .max(255),
+  title: z.string().min(1, { message: "The title must be 1 letter at least" }),
 });
 
-const CreatePage = () => {
+export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
+  const [isEdditing, setIsEdditing] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-    },
+    defaultValues: initialData,
   });
+
+  const toggleEdditing = () => setIsEdditing((prev) => !prev);
 
   const { isValid, isSubmitting } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post("/api/courses", values);
-      router.push(`/teacher/courses/${res.data.id}`);
-      toast.success("Course created");
+      await axios.put(`/api/courses/${courseId}`, values);
+      toggleEdditing();
+      toast.success("Course updated");
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
 
   return (
-    <div className="mz-auto flex h-full max-w-5xl p-6 md:items-center md:justify-center">
-      <div>
-        <h1 className="text-3xl font-bold">Name your course</h1>
-        <p className="text-sm text-slate-600">
-          Choose a name that describes your course.
-        </p>
+    <div className="mt-6 rounded-md border bg-slate-100 p-4">
+      <div className="flex items-center justify-between font-medium">
+        Course Title
+        <Button variant={"ghost"} onClick={toggleEdditing}>
+          {isEdditing ? (
+            <>Cancel</>
+          ) : (
+            <>
+              <PenIcon className="mr-2 h-4 w-4" />
+              Edit title
+            </>
+          )}
+        </Button>
+      </div>
+      {!isEdditing && <div className="mt-2 text-sm">{initialData.title}</div>}
+      {isEdditing && (
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="mt-8 space-y-8"
+            className="mt-4 space-y-4"
           >
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
@@ -75,27 +89,17 @@ const CreatePage = () => {
                     ></Input>
                   </FormControl>
                   <FormMessage />
-                  <FormDescription>
-                    What will you teach in this course?
-                  </FormDescription>
                 </FormItem>
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Link href="/">
-                <Button variant="ghost" type="button">
-                  Cancel
-                </Button>
-              </Link>
               <Button type="submit" disabled={!isValid || isSubmitting}>
-                Continue
+                Save
               </Button>
             </div>
           </form>
         </Form>
-      </div>
+      )}
     </div>
   );
 };
-
-export default CreatePage;
