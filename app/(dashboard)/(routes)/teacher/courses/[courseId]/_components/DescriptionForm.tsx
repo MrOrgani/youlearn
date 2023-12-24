@@ -49,7 +49,7 @@ export const DescriptionForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.put(`/api/courses/${courseId}`, values);
+      await axios.patch(`/api/courses/${courseId}`, values);
       toggleEdditing();
       toast.success("Course updated");
       router.refresh();
