@@ -1,6 +1,12 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import Mux from "@mux/mux-node";
+
+const { Video } = new Mux(
+  process.env.MUX_TOKEN_ID!,
+  process.env.MUX_TOKEN_SECRET!,
+);
 
 export async function PATCH(
   req: Request,
@@ -35,6 +41,37 @@ export async function PATCH(
         ...values,
       },
     });
+
+    if (values.videoUrl) {
+      const existinVideo = await db.muxData.findFirst({
+        where: {
+          chapterId: params.chapterId,
+        },
+      });
+
+      if (existinVideo) {
+        await Video.Assets.del(existinVideo.assetId);
+        await db.muxData.delete({
+          where: {
+            id: existinVideo.id,
+          },
+        });
+      }
+
+      const video = await Video.Assets.create({
+        input: values.videoUrl,
+        playback_policy: "public",
+        test: false,
+      });
+
+      await db.muxData.create({
+        data: {
+          assetId: video.id,
+          playbackId: video.playback_ids?.[0].id,
+          chapterId: params.chapterId,
+        },
+      });
+    }
 
     return NextResponse.json(chapter);
   } catch (error) {

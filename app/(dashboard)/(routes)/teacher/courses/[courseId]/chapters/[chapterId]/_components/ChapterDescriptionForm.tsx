@@ -77,14 +77,14 @@ export const ChapterDescriptionForm = ({
         </Button>
       </div>
       {!isEdditing && (
-        <p
+        <div
           className={cn(
             "mt-2 text-sm",
             !initialData.description && "italic text-slate-500",
           )}
         >
           <Preview value={initialData.description || "No description"} />
-        </p>
+        </div>
       )}
       {isEdditing && (
         <Form {...form}>
