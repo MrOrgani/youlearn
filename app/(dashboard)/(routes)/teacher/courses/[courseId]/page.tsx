@@ -1,5 +1,3 @@
-// "use client";
-
 import { IconBadge } from "@/components/IconBadge";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
