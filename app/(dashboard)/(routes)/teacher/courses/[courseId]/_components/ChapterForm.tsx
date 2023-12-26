@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Chapter, Course } from "@prisma/client";
 import axios from "axios";
-import { PlusCircle } from "lucide-react";
+import { Loader2, PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -74,7 +74,12 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
   };
 
   return (
-    <div className="mt-6 rounded-md border bg-slate-100 p-4">
+    <div className="relative mt-6 rounded-md border bg-slate-100 p-4">
+      {isUpdating && (
+        <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md bg-slate-500/20">
+          <Loader2 className=" h-6 w-6 animate-spin" />
+        </div>
+      )}
       <div className="flex items-center justify-between font-medium">
         Course chapters
         <Button variant={"ghost"} onClick={toggleCreating}>
