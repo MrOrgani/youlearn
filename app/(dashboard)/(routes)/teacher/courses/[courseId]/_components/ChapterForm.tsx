@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod";
+import { ChaptersList } from "./ChaptersList";
 
 interface ChapterFormProps {
   initialData: Course & { chapters: Chapter[] };
@@ -54,6 +55,21 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
+    }
+  };
+
+  const onReorder = async (updateData: { id: string; position: number }[]) => {
+    try {
+      setIsUpdating(true);
+      await axios.patch(`/api/courses/${courseId}/chapters/reorder`, {
+        list: updateData,
+      });
+      toast.success("Chapters reordered");
+      router.refresh();
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -108,7 +124,12 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
             !initialData.chapters.length && "italic text-slate-500",
           )}
         >
-          {!initialData.chapters.length ? "No chapters yet" : ""}
+          {!initialData.chapters.length && "No chapters"}
+          <ChaptersList
+            onEdit={() => {}}
+            onReorder={onReorder}
+            items={initialData.chapters}
+          />
         </div>
       )}
       {!isCreating && (
