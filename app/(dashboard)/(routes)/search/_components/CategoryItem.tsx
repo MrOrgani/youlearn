@@ -35,7 +35,6 @@ export const CategoryItem = ({
       },
       { skipNull: true, skipEmptyString: true },
     );
-    console.log("url");
     router.push(url);
   };
   return (

@@ -10,9 +10,12 @@ const SearchPage = async () => {
   });
 
   return (
-    <div className="p-6">
-      <Categories items={categories}></Categories>
-    </div>
+    <>
+      <div className=" block px-6 pt-6 md:mb-0 md:hidden"></div>
+      <div className="p-6">
+        <Categories items={categories}></Categories>
+      </div>
+    </>
   );
 };
 
