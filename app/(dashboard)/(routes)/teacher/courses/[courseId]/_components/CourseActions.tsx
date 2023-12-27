@@ -24,10 +24,9 @@ export const CourseActions = ({
   const onConfirmDelete = async () => {
     try {
       setisLaoding(true);
-      isPublished
-        ? await axios.patch(`/api/courses/${courseId}/unpublish`)
-        : await axios.patch(`/api/courses/${courseId}/publish`);
-      toast.success("Course deleted");
+      await axios.delete(`/api/courses/${courseId}`);
+      toast.success("Chapter deleted");
+      router.push(`/teacher/courses`);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
@@ -39,10 +38,10 @@ export const CourseActions = ({
   const publishChapter = async () => {
     try {
       setisLaoding(true);
-      await axios.patch(`/api/courses/${courseId}/publish`, {
-        isPublished: !isPublished,
-      });
-      toast.success("Course updated");
+      isPublished
+        ? await axios.patch(`/api/courses/${courseId}/unpublish`)
+        : await axios.patch(`/api/courses/${courseId}/publish`);
+      toast.success("Course deleted");
     } catch (error) {
       toast.error("Something went wrong");
     } finally {

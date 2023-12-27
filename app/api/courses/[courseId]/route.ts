@@ -56,32 +56,39 @@ export async function DELETE(
       });
     }
 
-    const chapters = await db.chapter.findMany({
+    const course = await db.course.findUnique({
       where: {
-        courseId,
+        id: courseId,
+        userId,
+      },
+      include: {
+        chapters: {
+          include: {
+            muxData: true,
+          },
+        },
       },
     });
 
-    for (const chapter of chapters) {
-      if (chapter.videoUrl) {
-        await Video.Assets.del(chapter.videoUrl);
-        await db.muxData.delete({
-          where: {
-            id: chapter.id,
-          },
-        });
-      }
+    if (!course) {
+      return new NextResponse("Not Found", {
+        status: 404,
+      });
     }
 
-    await db.chapter.deleteMany({
-      where: {
-        courseId,
-      },
-    });
+    for (const chapter of course.chapters) {
+      await Video.Assets.del(chapter.muxData?.assetId!);
+      await db.muxData.delete({
+        where: {
+          id: chapter.muxData?.id,
+        },
+      });
+    }
 
     const deletedCourse = await db.course.delete({
       where: {
         id: courseId,
+        userId,
       },
     });
 
