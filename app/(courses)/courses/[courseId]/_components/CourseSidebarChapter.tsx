@@ -16,7 +16,7 @@ export const CourseSidebarChapter = ({
   const pathname = usePathname();
   const router = useRouter();
 
-  const isChapterCompleted = chapter.userProgress?.[0].isCompleted;
+  const isChapterCompleted = chapter.userProgress?.[0]?.isCompleted;
   const lockedChapter = !chapter.isFree && !isPurchased;
   const Icon = lockedChapter
     ? LockIcon
