@@ -10,11 +10,7 @@ interface SidebarItemProps {
   href: string;
 }
 
-export const SidebarItem: React.FC<SidebarItemProps> = ({
-  icon: Icon,
-  label,
-  href,
-}) => {
+export const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
   const pathname = usePathname();
   const router = useRouter();
 
