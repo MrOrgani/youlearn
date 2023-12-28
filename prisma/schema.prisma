@@ -123,7 +123,6 @@ model StripeCustomer {
   userId String @unique
 
   stripeCustomerId String @unique
-  stripeSubscriptionId String @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
