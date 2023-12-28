@@ -41,7 +41,7 @@ export const CourseActions = ({
       isPublished
         ? await axios.patch(`/api/courses/${courseId}/unpublish`)
         : await axios.patch(`/api/courses/${courseId}/publish`);
-      toast.success("Course deleted");
+      toast.success(`Course ${isPublished ? "unpublished" : "published"}`);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
