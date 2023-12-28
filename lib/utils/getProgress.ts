@@ -1,4 +1,4 @@
-import { db } from "./db";
+import { db } from "../db";
 
 export const getProgress = async (userId: string, courseId: string) => {
   try {

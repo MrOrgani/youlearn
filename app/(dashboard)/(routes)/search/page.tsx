@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import React from "react";
 import { Categories } from "./_components/Categories";
-import { getCourses } from "@/lib/getCourses";
+import { getCourses } from "@/lib/utils/getCourses";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { CoursesList } from "./_components/CoursesList";

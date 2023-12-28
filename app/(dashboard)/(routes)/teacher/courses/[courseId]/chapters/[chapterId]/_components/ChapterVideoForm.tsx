@@ -96,7 +96,7 @@ export const ChapterVideoForm = ({
       )}
       {initialData.videoUrl && !isEditing && (
         <div className="mt-4 text-xs text-muted-foreground">
-          Video is loading. you can referesh if it doesn't load in a few
+          Video is loading. You can referesh if it does not load in a few
           seconds.
         </div>
       )}

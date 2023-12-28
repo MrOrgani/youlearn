@@ -1,9 +1,14 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import React from "react";
 
-const CoursePage = async ({ params }: { param: { courseId: string } }) => {
+interface CoursePageProps {
+  params: {
+    courseId: string;
+  };
+}
+
+const CoursePage = async ({ params }: CoursePageProps) => {
   const { userId } = auth();
 
   if (!userId) {

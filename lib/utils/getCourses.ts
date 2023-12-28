@@ -1,5 +1,5 @@
 import { Category, Course } from "@prisma/client";
-import { db } from "./db";
+import { db } from "../db";
 import { getProgress } from "./getProgress";
 
 interface GetCoursesProps {

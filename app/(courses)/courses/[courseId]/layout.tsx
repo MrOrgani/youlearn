@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { getProgress } from "@/lib/getProgress";
+import { getProgress } from "@/lib/utils/getProgress";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
