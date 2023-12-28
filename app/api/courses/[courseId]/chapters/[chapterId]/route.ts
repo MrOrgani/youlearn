@@ -50,7 +50,9 @@ export async function PATCH(
       });
 
       if (existinVideo) {
-        await Video.Assets.del(existinVideo.assetId);
+        if (await Video.Assets.get(existinVideo.assetId)) {
+          await Video.Assets.del(existinVideo.assetId);
+        }
         await db.muxData.delete({
           where: {
             id: existinVideo.id,
