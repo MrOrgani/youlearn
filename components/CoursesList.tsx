@@ -1,5 +1,5 @@
 import { Category, Course } from "@prisma/client";
-import { CourseCard } from "./CourseCard";
+import { CourseCard } from "../app/(dashboard)/(routes)/search/_components/CourseCard";
 
 interface CourseListProps {
   courses: Array<

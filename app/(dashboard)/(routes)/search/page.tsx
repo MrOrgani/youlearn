@@ -4,7 +4,8 @@ import { Categories } from "./_components/Categories";
 import { getCourses } from "@/lib/utils/getCourses";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import { CoursesList } from "./_components/CoursesList";
+import { CoursesList } from "../../../../components/CoursesList";
+import { SearchInput } from "@/components/SearchInput";
 
 interface SearchPageProps {
   searchParams: {
@@ -30,7 +31,9 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
 
   return (
     <>
-      <div className=" block px-6 pt-6 md:mb-0 md:hidden"></div>
+      <div className=" block px-6 pt-6 md:mb-0 md:hidden">
+        <SearchInput />
+      </div>
       <div className="p-6">
         <Categories items={categories}></Categories>
         <CoursesList courses={courses}></CoursesList>
