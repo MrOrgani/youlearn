@@ -9,7 +9,7 @@ export async function PUT(
 ) {
   try {
     const { userId } = auth();
-    const { isCompleted } = await req.json();
+    const { isFinished } = await req.json();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -23,12 +23,12 @@ export async function PUT(
         },
       },
       update: {
-        isCompleted,
+        isCompleted: isFinished,
       },
       create: {
         userId,
         chapterId: params.chapterId,
-        isCompleted,
+        isCompleted: isFinished,
       },
     });
 
