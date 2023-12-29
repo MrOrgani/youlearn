@@ -59,6 +59,7 @@ export const CourseFinishedButton = ({
       variant={isFinished ? "outline" : "default"}
       className={`auto
       ${isFinished ? "" : " bg-emerald-600 text-white hover:bg-emerald-600/80"}
+      w-full md:w-auto
       `}
     >
       {isFinished ? "Mark as not finished" : "Mark as finished"}

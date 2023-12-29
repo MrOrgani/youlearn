@@ -70,27 +70,7 @@ const ChapterPage = async ({
           />
         </div>
         <div>
-          <div className="justify-betweensm:hidden flex flex-col items-center ">
-            <h2 className="mb-2 text-2xl font-semibold md:hidden">
-              {chapter.title}
-            </h2>
-            <div className="md:hidden">
-              {purchase ? (
-                <CourseFinishedButton
-                  chapterId={params.chapterId}
-                  isFinished={!!userProgress?.isCompleted}
-                  courseId={params.courseId}
-                  nextChapterId={nextChapterId}
-                />
-              ) : (
-                <CourseEnrollmentButton
-                  courseId={params.courseId}
-                  price={course.price!}
-                />
-              )}
-            </div>
-          </div>
-          <div className="hidden flex-row items-center justify-between p-4 md:flex">
+          <div className="flex flex-col items-center justify-between p-4 md:flex-row">
             <h2 className="mb-2 text-2xl font-semibold">{chapter.title}</h2>
             {purchase ? (
               <CourseFinishedButton
