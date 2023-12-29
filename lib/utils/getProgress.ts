@@ -17,12 +17,6 @@ export const getProgress = async ({
         id: true,
       },
     });
-    console.log(
-      "🚀 ~ file: getProgress.ts:14 ~ getProgress ~ publishedChapters:",
-      publishedChapters,
-      courseId,
-    );
-
     const chapterIds = publishedChapters.map((chapter) => chapter.id);
 
     const completedChapters = await db.userProgress.count({
