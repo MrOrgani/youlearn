@@ -8,6 +8,7 @@ import { CourseEnrollmentButton } from "./_components/CourseEnrollmentButton";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/Preview";
 import { File } from "lucide-react";
+import { CourseFinishedButton } from "./_components/CourseFinishedButton";
 
 const ChapterPage = async ({
   params,
@@ -51,7 +52,9 @@ const ChapterPage = async ({
       {isBlocked && (
         <Banner label="You need to purchase this course to access this chapter" />
       )}
-      {isCompleted && <Banner label={"You have finished this chapter"} />}
+      {isCompleted && (
+        <Banner variant={"success"} label={"You have finished this chapter"} />
+      )}
       <div className="mx-auto flex max-w-4xl flex-col pb-20">
         <div className="p-4">
           <VideoPlayer
@@ -67,18 +70,34 @@ const ChapterPage = async ({
           />
         </div>
         <div>
-          <div className="flex flex-col items-center justify-between p-4 md:flex-row">
+          <div className="justify-betweensm:hidden flex flex-col items-center ">
+            <h2 className="mb-2 text-2xl font-semibold md:hidden">
+              {chapter.title}
+            </h2>
+            <div className="md:hidden">
+              {purchase ? (
+                <CourseFinishedButton
+                  chapterId={params.chapterId}
+                  isFinished={!!userProgress?.isCompleted}
+                  courseId={params.courseId}
+                  nextChapterId={nextChapterId}
+                />
+              ) : (
+                <CourseEnrollmentButton
+                  courseId={params.courseId}
+                  price={course.price!}
+                />
+              )}
+            </div>
+          </div>
+          <div className="hidden flex-row items-center justify-between p-4 md:flex">
             <h2 className="mb-2 text-2xl font-semibold">{chapter.title}</h2>
             {purchase ? (
-              // <CourseProgressButton
-              //   chapterId={params.chapterId}
-              //   courseId={params.courseId}
-              //   nextChapterId={nextChapter?.id}
-              //   isCompleted={!!userProgress?.isCompleted}
-              //   />
-              <CourseEnrollmentButton
+              <CourseFinishedButton
+                isFinished={!!userProgress?.isCompleted}
                 courseId={params.courseId}
-                price={course.price!}
+                chapterId={params.chapterId}
+                nextChapterId={nextChapterId}
               />
             ) : (
               <CourseEnrollmentButton

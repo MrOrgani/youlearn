@@ -4,6 +4,7 @@ import { Chapter, Course, UserProgress } from "@prisma/client";
 import { redirect } from "next/navigation";
 import React from "react";
 import { CourseSidebarChapter } from "./CourseSidebarChapter";
+import { CourseProgress } from "@/components/CourseProgress";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -29,6 +30,11 @@ export const CourseSidebar = async ({
     <div className=" flex h-full flex-col overflow-y-auto border-r shadow-sm">
       <div className="flex flex-col border-b p-8">
         <h1 className="font-bold">{course.title}</h1>
+        {purchasedCourse && (
+          <div className="mt-10">
+            <CourseProgress value={progress} />
+          </div>
+        )}
       </div>
       <div className="flex w-full flex-col">
         {course.chapters.map((chapter) => {

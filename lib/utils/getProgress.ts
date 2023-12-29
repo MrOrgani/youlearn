@@ -1,17 +1,31 @@
 import { db } from "../db";
 
-export const getProgress = async (userId: string, courseId: string) => {
+export const getProgress = async ({
+  userId,
+  courseId,
+}: {
+  userId: string;
+  courseId: string;
+}) => {
   try {
-    const progressOnCourses = await db.chapter.findMany({
+    const publishedChapters = await db.chapter.findMany({
       where: {
         courseId,
         isPublished: true,
       },
+      select: {
+        id: true,
+      },
     });
+    console.log(
+      "🚀 ~ file: getProgress.ts:14 ~ getProgress ~ publishedChapters:",
+      publishedChapters,
+      courseId,
+    );
 
-    const chapterIds = progressOnCourses.map((chapter) => chapter.id);
+    const chapterIds = publishedChapters.map((chapter) => chapter.id);
 
-    const completedChapters = await db.userProgress.findMany({
+    const completedChapters = await db.userProgress.count({
       where: {
         userId,
         chapterId: {
@@ -21,9 +35,8 @@ export const getProgress = async (userId: string, courseId: string) => {
       },
     });
 
-    const percentageCompletedChapter = Math.round(
-      (completedChapters.length / progressOnCourses.length) * 100,
-    );
+    const percentageCompletedChapter =
+      chapterIds.length > 0 ? (completedChapters / chapterIds.length) * 100 : 0;
 
     return percentageCompletedChapter;
   } catch (e) {

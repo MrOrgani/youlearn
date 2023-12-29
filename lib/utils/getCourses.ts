@@ -40,7 +40,7 @@ export const getCourses = async ({
     const coursesWithProgress: CourseWithProgressWithCategory[] =
       await Promise.all(
         courses.map(async (course) => {
-          const progress = await getProgress(userId, course.id);
+          const progress = await getProgress({ userId, courseId: course.id });
           return {
             ...course,
             progress,
