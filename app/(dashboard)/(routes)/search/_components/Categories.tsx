@@ -8,7 +8,6 @@ import {
   Camera,
   Computer,
   GraduationCap,
-  GraduationCapIcon,
   HeartPulse,
   LampDesk,
   Landmark,
@@ -20,7 +19,6 @@ import {
 } from "lucide-react";
 import React from "react";
 import { CategoryItem } from "./CategoryItem";
-import { IconType } from "react-icons";
 
 interface CategoriesProps {
   items: Category[];
@@ -44,7 +42,7 @@ const icons: Record<string, LucideIcon> = {
 
 export const Categories = ({ items }: CategoriesProps) => {
   return (
-    <div className="flex items-center gap-x-2 overflow-x-auto pb-2 ">
+    <div className="flex items-center gap-x-2 overflow-x-auto px-6 ">
       {items.map((item) => (
         <CategoryItem
           key={item.id}

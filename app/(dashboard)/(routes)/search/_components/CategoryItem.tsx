@@ -40,11 +40,11 @@ export const CategoryItem = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-x-1 rounded-full border ${
+      className={`flex items-center gap-x-1 rounded-xl ${
         isCurrentCategory
-          ? " border-sky-700 bg-sky-200/20 text-sky-800"
-          : "border-slate-200"
-      }  px-3 py-2 text-sm transition  hover:border-sky-700`}
+          ? "bg-white text-background"
+          : " hover:bg-background20  bg-white/10 text-primary"
+      } my-3 h-8  px-3  text-sm transition-all`}
       type="button"
     >
       {Icon && <Icon size={20} />}
