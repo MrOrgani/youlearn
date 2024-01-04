@@ -13,14 +13,14 @@ export const CourseProgress = ({ value, size }: CourseProgressProps) => {
       <Progress
         className={`h-2 `}
         value={value}
-        barColor={value === 100 ? "bg-emerald-700" : "bg-sky-700"}
+        barColor={value === 100 ? "bg-emerald-700" : "bg-[#FF0000]"}
       />
       <p
         className={`${value === 100 ? "text-emerald-700" : "text-sky-700"} ${
           size === "xsmall" ? "text-xs" : "text-sm"
         }`}
       >
-        {Math.round(value)}% complete
+        {/* {Math.round(value)}% complete */}
       </p>
     </div>
   );
