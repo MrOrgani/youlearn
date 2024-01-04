@@ -11,7 +11,7 @@ export const CourseProgress = ({ value, size }: CourseProgressProps) => {
   return (
     <div>
       <Progress
-        className={`h-2 `}
+        className={`h-1 `}
         value={value}
         barColor={value === 100 ? "bg-emerald-700" : "bg-[#FF0000]"}
       />
