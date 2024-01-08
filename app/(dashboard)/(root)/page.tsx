@@ -8,7 +8,7 @@ export default async function Dashboard() {
   if (!userId) return redirect("/");
   const courses = await getUserCourses({ userId });
   return (
-    <div className="space-y-4 p-6">
+    <div className="space-y-4 p-2">
       <CoursesList courses={courses} />
     </div>
   );

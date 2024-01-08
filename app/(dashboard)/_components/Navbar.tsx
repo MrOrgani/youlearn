@@ -5,11 +5,11 @@ import { Logo } from "./Logo";
 
 export const Navbar = () => {
   return (
-    <div className="flex h-full items-center border-b bg-background p-4 shadow-sm">
-      <div className="p-6 ">
+    <div className="flex w-full items-center justify-between  bg-background p-2 shadow-sm">
+      <div className=" flex  min-w-max">
+        <MobileSidebar />
         <Logo />
       </div>
-      <MobileSidebar />
       <NavbarRoutes />
     </div>
   );

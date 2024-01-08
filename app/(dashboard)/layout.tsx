@@ -7,7 +7,6 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   return (
     <div className="h-full">
-      {/* <div className="fixed  z-50 h-[56px] w-full md:pl-56"> */}
       <div className="fixed  z-50 h-[56px] w-full ">
         <Navbar />
       </div>

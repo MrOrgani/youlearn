@@ -21,10 +21,14 @@ export const NavbarRoutes = () => {
           <SearchInput />
         </div>
       )}
-      <div className={"ml-auto flex gap-x-2"}>
+      <div className={" flex gap-x-2"}>
         {isTeacherPage || isCoursePage ? (
           <Link href={"/"}>
-            <Button size={"sm"} variant={"ghost"}>
+            <Button
+              size={"sm"}
+              variant={"ghost"}
+              className=" bg-background20 text-whitef1"
+            >
               <LogOut className={"mr-2 h-4 w-4"} />
               Exit
             </Button>

@@ -40,13 +40,13 @@ const Courselayout = async ({
 
   return (
     <div className=" h-full">
-      <div className="fixed inset-y-0 z-50 h-[56px] w-full md:pl-80">
+      <div className="fixed inset-y-0 z-50 h-[56px] w-full ">
         <CourseNavbar course={course} progress={progress} />
       </div>
-      <div className="fixed inset-y-0 z-50  hidden h-full w-24 flex-col md:flex">
+      <div className="fixed inset-y-0 z-50 mt-[56px]  hidden h-full w-80 flex-col md:flex">
         <CourseSidebar course={course} progress={progress}></CourseSidebar>
       </div>
-      <main className=" h-full pt-[56px] md:pl-24">{children}</main>
+      <main className=" h-full pt-[56px] md:pl-80">{children}</main>
     </div>
   );
 };
