@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ToasterProvider } from "@/components/provider/ToasterProvider";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,13 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <ToasterProvider />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <>
+      <Head>
+        <link rel="icon" href="./icon.svg" type="image/svg" sizes="32x32" />
+      </Head>
+
+      <ClerkProvider>
+        <html lang="en">
+          <body className={inter.className}>
+            <ToasterProvider />
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
+    </>
   );
 }
