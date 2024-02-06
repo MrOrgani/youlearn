@@ -35,21 +35,14 @@ export const CourseSidebarChapter = ({
       onClick={onClick}
       type="button"
       className={cn(
-        `flex items-center gap-x-2 rounded-md pl-6 text-sm font-[500] text-slate-500 transition-all hover:bg-slate-300/20 hover:text-slate-600`,
-        isActive &&
-          "bg-sky-200/20 text-sky-700  hover:bg-sky-200/20 hover:text-sky-700",
-        isChapterCompleted &&
-          " text-emerald-700  hover:bg-emerald-200/20 hover:text-emerald-700",
+        `flex items-center gap-x-2 rounded-md pl-6 text-sm font-[500]  text-primary transition-all  hover:bg-background20 `,
+        isActive && " bg-background20",
       )}
     >
       <div className="flex items-center gap-x-2 py-4 ">
         <Icon
           size={22}
-          className={cn(
-            "text-slate-500",
-            isActive && "text-sky-700",
-            isChapterCompleted && "text-emerald-700",
-          )}
+          className={cn("text-primary transition-all  hover:bg-background20")}
         />
         {chapter.title}
       </div>

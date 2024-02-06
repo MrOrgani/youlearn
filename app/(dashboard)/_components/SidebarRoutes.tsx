@@ -29,7 +29,7 @@ export const SidebarRoutes = () => {
   const routes = isTeacher ? teacherRoutes : guestRoutes;
 
   return (
-    <div className="bg-backgroun2 flex w-full  flex-col space-y-2 px-2">
+    <div className="bg-backgroun20 flex w-full  flex-col space-y-2 px-2">
       {routes.map((route) => {
         return (
           <SidebarItem
