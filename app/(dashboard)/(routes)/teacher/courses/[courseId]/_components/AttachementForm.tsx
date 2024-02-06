@@ -1,16 +1,15 @@
 "use client";
 
-import * as z from "zod";
+import { Attachement, Course } from "@prisma/client";
 import axios from "axios";
-import { Pencil, PlusCircle, ImageIcon, File, Loader2, X } from "lucide-react";
+import { File, Loader2, PlusCircle, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { Attachement, Course } from "@prisma/client";
-import Image from "next/image";
+import * as z from "zod";
 
-import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/FileUpload";
+import { Button } from "@/components/ui/button";
 
 interface AttachementFormProps {
   initialData: Course & { attachement: Attachement[] };
@@ -60,7 +59,7 @@ export const AttachementForm = ({
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Course attachement
-        <Button onClick={toggleEdit} variant="ghost">
+        <Button onClick={toggleEdit} variant={"secondary"}>
           {isEditing && <>Cancel</>}
           {!isEditing && (
             <>

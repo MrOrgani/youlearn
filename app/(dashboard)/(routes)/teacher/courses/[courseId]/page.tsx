@@ -1,22 +1,15 @@
-import { IconBadge } from "@/components/IconBadge";
+import { Banner } from "@/components/Banner";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
-import {
-  CircleDollarSign,
-  File,
-  LayoutDashboard,
-  ListChecks,
-} from "lucide-react";
 import { redirect } from "next/navigation";
-import { TitleForm } from "./_components/TitleForm";
+import { AttachementForm } from "./_components/AttachementForm";
+import { CategoryForm } from "./_components/CategoryForm";
+import { ChapterForm } from "./_components/ChapterForm";
+import { CourseActions } from "./_components/CourseActions";
 import { DescriptionForm } from "./_components/DescriptionForm";
 import { ImageForm } from "./_components/ImageForm";
-import { CategoryForm } from "./_components/CategoryForm";
 import { PriceForm } from "./_components/PriceForm";
-import { AttachementForm } from "./_components/AttachementForm";
-import { ChapterForm } from "./_components/ChapterForm";
-import { Banner } from "@/components/Banner";
-import { CourseActions } from "./_components/CourseActions";
+import { TitleForm } from "./_components/TitleForm";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -77,8 +70,8 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       )}
       <div className="p-6">
         <div className="flex items-center justify-between">
-          <div className="flex flex-col gap-y-2">
-            <h1 className="text-2xl font-medium">Course setup</h1>
+          <div className="flex flex-col gap-y-2 text-whitef1">
+            <h1 className="text-2xl font-medium ">Course setup</h1>
             <span>Complete all fields {complexionText}</span>
           </div>
           <CourseActions
@@ -90,8 +83,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 ">
           <div>
             <div className="flex items-center gap-x-2">
-              <IconBadge icon={LayoutDashboard} />
-              <h2 className="text-xl">Edit your course</h2>
+              <h2 className="text-xl text-whitef1">Edit your course</h2>
             </div>
             <TitleForm initialData={course} courseId={course.id} />
             <DescriptionForm initialData={course} courseId={course.id} />
@@ -108,8 +100,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <div className="space-y-6">
             <div>
               <div className="flex items-center gap-x-2">
-                <IconBadge icon={ListChecks} />
-                <h2 className="text-xl">Course chapters</h2>
+                <h2 className="text-xl text-whitef1">Course chapters</h2>
               </div>
               <div>
                 <ChapterForm initialData={course} courseId={course.id} />
@@ -117,15 +108,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             </div>
             <div>
               <div className="flex items-center gap-x-2">
-                <IconBadge icon={CircleDollarSign} />
-                <h2 className="text-xl">Sell your course</h2>
+                <h2 className="text-xl text-whitef1">Sell your course</h2>
               </div>
               <PriceForm initialData={course} courseId={course.id} />
             </div>
             <div>
               <div className="flex items-center gap-x-2">
-                <IconBadge icon={File} />
-                <h2 className="text-xl">Attachements</h2>
+                <h2 className="text-xl text-whitef1">Attachements</h2>
               </div>
               <AttachementForm initialData={course} courseId={course.id} />
             </div>

@@ -2,16 +2,16 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatPrice } from "@/lib/format";
-import { Course } from "@prisma/client";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { formatPrice } from "@/lib/format";
+import { Course } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal, Pen, Pencil } from "lucide-react";
+import { ArrowUpDown, MoreHorizontal, Pencil } from "lucide-react";
 import Link from "next/link";
 
 export const columns: ColumnDef<Course>[] = [
@@ -20,7 +20,7 @@ export const columns: ColumnDef<Course>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
+          variant="secondary"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Title
@@ -34,7 +34,7 @@ export const columns: ColumnDef<Course>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
+          variant="secondary"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Price
@@ -53,7 +53,7 @@ export const columns: ColumnDef<Course>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
+          variant="secondary"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Published
@@ -78,13 +78,13 @@ export const columns: ColumnDef<Course>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost">
+            <Button variant="secondary">
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <Link href={`/teacher/courses/${id}`}>
-              <DropdownMenuItem>
+          <DropdownMenuContent align="end" className="p-0">
+            <Link href={`/teacher/courses/${id}`} className=" ">
+              <DropdownMenuItem className=" border-none bg-background20 text-whitef1">
                 <Pencil className="mr-2 h-4 w-4" />
                 Edit
               </DropdownMenuItem>

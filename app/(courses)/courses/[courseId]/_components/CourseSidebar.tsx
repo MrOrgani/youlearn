@@ -1,10 +1,10 @@
+import { CourseProgress } from "@/components/CourseProgress";
+import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { Chapter, Course, UserProgress } from "@prisma/client";
 import { redirect } from "next/navigation";
-import React from "react";
 import { CourseSidebarChapter } from "./CourseSidebarChapter";
-import { CourseProgress } from "@/components/CourseProgress";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -27,16 +27,17 @@ export const CourseSidebar = async ({
   });
 
   return (
-    <div className=" flex h-full flex-col overflow-y-auto border-r shadow-sm">
-      <div className="flex flex-col border-b p-8">
-        <h1 className="text-whitef1 font-bold">{course.title}</h1>
+    <div className=" flex h-full flex-col overflow-y-auto  shadow-sm">
+      <div className="flex flex-col p-8">
+        <h1 className="font-bold text-whitef1">{course.title}</h1>
         {purchasedCourse && (
           <div className="mt-10">
             <CourseProgress value={progress} />
           </div>
         )}
       </div>
-      <div className="flex w-full flex-col">
+      <Separator orientation="horizontal" className="my-3 bg-background20" />
+      <div className="flex w-full flex-col gap-y-2 p-4">
         {course.chapters.map((chapter) => {
           return (
             <CourseSidebarChapter

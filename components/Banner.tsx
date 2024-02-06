@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { AlertTriangle, CheckCircleIcon } from "lucide-react";
-import React from "react";
 
 const variants = cva(
   "border text-center p-4 text-sm flex items-center w-full",
@@ -31,7 +30,7 @@ export const Banner = ({ variant, label }: BannerProps) => {
   const Icon = iconMap[variant || "warning"];
 
   return (
-    <div className={cn(variants({ variant }))}>
+    <div className={cn("rounded-md", variants({ variant }))}>
       <Icon className="mr-2 h-4 w-4" />
       {label}
     </div>

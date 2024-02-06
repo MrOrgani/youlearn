@@ -1,16 +1,16 @@
 "use client";
 
-import * as z from "zod";
+import { Course } from "@prisma/client";
 import axios from "axios";
-import { Pencil, PlusCircle, ImageIcon } from "lucide-react";
+import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { Course } from "@prisma/client";
-import Image from "next/image";
+import * as z from "zod";
 
-import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/FileUpload";
+import { Button } from "@/components/ui/button";
 
 interface ImageFormProps {
   initialData: Course;
@@ -45,7 +45,7 @@ export const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Course image
-        <Button onClick={toggleEdit} variant="ghost">
+        <Button onClick={toggleEdit} variant="secondary">
           {isEditing && <>Cancel</>}
           {!isEditing && !initialData.imageUrl && (
             <>

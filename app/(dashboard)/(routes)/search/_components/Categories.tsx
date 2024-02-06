@@ -17,7 +17,6 @@ import {
   SprayCan,
   Target,
 } from "lucide-react";
-import React from "react";
 import { CategoryItem } from "./CategoryItem";
 
 interface CategoriesProps {
@@ -42,7 +41,7 @@ const icons: Record<string, LucideIcon> = {
 
 export const Categories = ({ items }: CategoriesProps) => {
   return (
-    <div className="flex items-center gap-x-2 overflow-x-auto px-6 ">
+    <div className="mx-2 flex items-center gap-x-2 overflow-x-auto px-2">
       {items.map((item) => (
         <CategoryItem
           key={item.id}

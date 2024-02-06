@@ -1,14 +1,13 @@
 import { Banner } from "@/components/Banner";
+import { Preview } from "@/components/Preview";
+import { Separator } from "@/components/ui/separator";
 import { getChapter } from "@/lib/utils/getChapter";
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-import React from "react";
-import { VideoPlayer } from "./_components/VideoPlayer";
-import { CourseEnrollmentButton } from "./_components/CourseEnrollmentButton";
-import { Separator } from "@/components/ui/separator";
-import { Preview } from "@/components/Preview";
 import { File } from "lucide-react";
+import { redirect } from "next/navigation";
+import { CourseEnrollmentButton } from "./_components/CourseEnrollmentButton";
 import { CourseFinishedButton } from "./_components/CourseFinishedButton";
+import { VideoPlayer } from "./_components/VideoPlayer";
 
 const ChapterPage = async ({
   params,
@@ -86,13 +85,21 @@ const ChapterPage = async ({
               />
             )}
           </div>
-          <Separator />
+          <Separator
+            orientation="horizontal"
+            className="my-3 bg-background20"
+          />
+
           <div>
             <Preview value={chapter.description ?? ""} />
           </div>
           {Boolean(attachements?.length) && (
             <>
-              <Separator />
+              <Separator
+                orientation="horizontal"
+                className="my-3 bg-background20"
+              />
+
               <div className="p-4">
                 {attachements?.map((attachement) => (
                   <a

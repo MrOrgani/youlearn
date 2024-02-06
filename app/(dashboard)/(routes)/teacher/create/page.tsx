@@ -1,11 +1,6 @@
 "use client";
 
-import React, { use } from "react";
-
-import * as z from "zod";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -16,10 +11,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import * as z from "zod";
 
 const formSchema = z.object({
   title: z
@@ -50,8 +48,8 @@ const CreatePage = () => {
   };
 
   return (
-    <div className="mz-auto flex h-full max-w-5xl p-6 md:items-center md:justify-center">
-      <div>
+    <div className="mz-auto flex h-full items-center justify-center p-6 text-whitef1">
+      <div className="max-w-5xl ">
         <h1 className="text-3xl font-bold">Name your course</h1>
         <p className="text-sm text-slate-600">
           Choose a name that describes your course.
@@ -71,6 +69,7 @@ const CreatePage = () => {
                     <Input
                       disabled={isSubmitting}
                       placeholder="e.g. Culinary techniques"
+                      className="bg-whitef1"
                       {...field}
                     ></Input>
                   </FormControl>
@@ -83,7 +82,7 @@ const CreatePage = () => {
             />
             <div className="flex items-center gap-x-2">
               <Link href="/">
-                <Button variant="ghost" type="button">
+                <Button variant={"ghost"} type="button">
                   Cancel
                 </Button>
               </Link>

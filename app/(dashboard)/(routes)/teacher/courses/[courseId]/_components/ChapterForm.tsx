@@ -9,7 +9,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Chapter, Course } from "@prisma/client";
@@ -86,7 +85,7 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
       )}
       <div className="flex items-center justify-between font-medium">
         Course chapters
-        <Button variant={"ghost"} onClick={toggleCreating}>
+        <Button variant={"secondary"} onClick={toggleCreating}>
           {isCreating ? (
             <>Cancel</>
           ) : (

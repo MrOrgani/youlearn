@@ -1,11 +1,10 @@
+import { SearchInput } from "@/components/SearchInput";
 import { db } from "@/lib/db";
-import React from "react";
-import { Categories } from "./_components/Categories";
 import { getCourses } from "@/lib/utils/getCourses";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { CoursesList } from "../../../../components/CoursesList";
-import { SearchInput } from "@/components/SearchInput";
+import { Categories } from "./_components/Categories";
 
 interface SearchPageProps {
   searchParams: {
@@ -31,11 +30,11 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
 
   return (
     <>
-      <div className=" block px-6  md:mb-0 md:hidden">
-        <SearchInput />
-      </div>
-      <div className="">
+      <div className="space-y-2 px-4">
         <Categories items={categories}></Categories>
+        <div className=" block p-2  md:mb-0 ">
+          <SearchInput />
+        </div>
         <CoursesList courses={courses}></CoursesList>
       </div>
     </>

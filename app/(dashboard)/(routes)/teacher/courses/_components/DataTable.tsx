@@ -12,6 +12,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -20,11 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { PlusCircle } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,16 +62,16 @@ export function DataTable<TData, TValue>({
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm bg-whitef1"
         />
-        <Link href="/teacher/courses/create">
-          <Button>
+        <Link href="/teacher/create">
+          <Button className="bg-[#8A1515]">
             <PlusCircle className="mr-2 h-4 w-4" />
             Create course
           </Button>
         </Link>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-whitef1">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -123,7 +123,7 @@ export function DataTable<TData, TValue>({
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
-          variant="outline"
+          className="bg-black20 text-whitef1"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
@@ -131,7 +131,7 @@ export function DataTable<TData, TValue>({
           Previous
         </Button>
         <Button
-          variant="outline"
+          className="bg-black20 text-whitef1"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}

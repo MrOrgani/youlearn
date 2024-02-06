@@ -8,7 +8,6 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -62,7 +61,7 @@ export const DescriptionForm = ({
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Course description
-        <Button variant={"ghost"} onClick={toggleEdditing}>
+        <Button variant={"secondary"} onClick={toggleEdditing}>
           {isEdditing ? (
             <>Cancel</>
           ) : (

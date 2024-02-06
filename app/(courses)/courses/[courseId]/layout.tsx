@@ -3,8 +3,8 @@ import { getProgress } from "@/lib/utils/getProgress";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
-import { CourseSidebar } from "./_components/CourseSidebar";
 import { CourseNavbar } from "./_components/CourseNavbar";
+import { CourseSidebar } from "./_components/CourseSidebar";
 
 const Courselayout = async ({
   children,
@@ -43,10 +43,10 @@ const Courselayout = async ({
       <div className="fixed inset-y-0 z-50 h-[56px] w-full ">
         <CourseNavbar course={course} progress={progress} />
       </div>
-      <div className="fixed inset-y-0 z-50 mt-[56px]  hidden h-full w-80 flex-col md:flex">
+      <div className="fixed inset-y-0 z-50 mt-[56px]  hidden h-full w-56 flex-col md:flex">
         <CourseSidebar course={course} progress={progress}></CourseSidebar>
       </div>
-      <main className=" h-full pt-[56px] md:pl-80">{children}</main>
+      <main className=" h-full pt-[56px] md:pl-56">{children}</main>
     </div>
   );
 };

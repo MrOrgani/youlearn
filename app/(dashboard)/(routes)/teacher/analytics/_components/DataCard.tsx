@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPrice } from "@/lib/format";
-import React from "react";
 
 interface DataCardProps {
   title: string;
@@ -10,7 +9,7 @@ interface DataCardProps {
 
 export const DataCard = ({ title, value, shouldFormat }: DataCardProps) => {
   return (
-    <Card>
+    <Card className="bg-whitef1">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
       </CardHeader>

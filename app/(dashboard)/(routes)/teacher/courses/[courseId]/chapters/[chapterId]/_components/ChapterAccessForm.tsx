@@ -1,7 +1,5 @@
 "use client";
 
-import { Editor } from "@/components/Editor";
-import { Preview } from "@/components/Preview";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -10,13 +8,12 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormMessage,
 } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Chapter } from "@prisma/client";
 import axios from "axios";
-import { Check, PenIcon } from "lucide-react";
+import { PenIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -67,7 +64,7 @@ export const ChapterAccessForm = ({
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Chapter access
-        <Button variant={"ghost"} onClick={toggleEdditing}>
+        <Button variant={"secondary"} onClick={toggleEdditing}>
           {isEdditing ? (
             <>Cancel</>
           ) : (
