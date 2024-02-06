@@ -99,6 +99,7 @@ export const DescriptionForm = ({
                       placeholder="e.g. This course is about..."
                       {...field}
                       value={field.value || ""}
+                      className="bg-whitef1"
                     ></Textarea>
                   </FormControl>
                   <FormMessage />
@@ -106,7 +107,12 @@ export const DescriptionForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                className="    text-whitef1"
+                variant={"outline"}
+              >
                 Save
               </Button>
             </div>

@@ -1,5 +1,4 @@
 import { Progress } from "@/components/ui/progress";
-import React from "react";
 
 interface CourseProgressProps {
   value: number;
@@ -9,18 +8,14 @@ interface CourseProgressProps {
 
 export const CourseProgress = ({ value, size }: CourseProgressProps) => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Progress
-        className={`h-1 `}
+        className={`h-1 w-full`}
         value={value}
         barColor={value === 100 ? "bg-emerald-700" : "bg-[#FF0000]"}
       />
-      <p
-        className={`${value === 100 ? "text-emerald-700" : "text-sky-700"} ${
-          size === "xsmall" ? "text-xs" : "text-sm"
-        }`}
-      >
-        {/* {Math.round(value)}% complete */}
+      <p className={`mt-1 text-xl font-medium text-whitef1 `}>
+        {Math.round(value)}%
       </p>
     </div>
   );

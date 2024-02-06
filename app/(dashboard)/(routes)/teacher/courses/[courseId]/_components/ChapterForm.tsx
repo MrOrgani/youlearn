@@ -111,6 +111,7 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
                     <Input
                       disabled={isSubmitting}
                       placeholder="e.g. This chapter is about..."
+                      className="bg-whitef1"
                       {...field}
                       value={field.value || ""}
                     ></Input>
@@ -119,7 +120,12 @@ export const ChapterForm = ({ initialData, courseId }: ChapterFormProps) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={!isValid || isSubmitting}>
+            <Button
+              type="submit"
+              disabled={!isValid || isSubmitting}
+              className="    text-whitef1"
+              variant={"outline"}
+            >
               Create
             </Button>
           </form>

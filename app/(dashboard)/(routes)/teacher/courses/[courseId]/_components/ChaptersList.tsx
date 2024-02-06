@@ -1,16 +1,16 @@
 "use client";
 
-import { Chapter } from "@prisma/client";
-import React, { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import {
   DragDropContext,
   Draggable,
   DropResult,
   Droppable,
 } from "@hello-pangea/dnd";
-import { cn } from "@/lib/utils";
+import { Chapter } from "@prisma/client";
 import { Grip, Pencil } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useEffect, useState } from "react";
 
 interface ChaptersListProps {
   items: Chapter[];
@@ -93,7 +93,9 @@ export const ChaptersList = ({
                     </div>
                     <div className="flex-1 px-2 py-3">{chapter.title}</div>
                     <div className="ml-auto flex items-center gap-x-2 pr-2">
-                      {chapter.isFree && <Badge>Free</Badge>}
+                      {chapter.isFree && (
+                        <Badge className="bg-emerald-700">Free</Badge>
+                      )}
                       {chapter.isPublished ? (
                         <Badge className="bg-sky-700">Published</Badge>
                       ) : (

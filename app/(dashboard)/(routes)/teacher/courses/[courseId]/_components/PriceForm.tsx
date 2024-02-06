@@ -94,6 +94,7 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
                       {...field}
                       type="number"
                       placeholder="Price"
+                      className="bg-whitef1"
                       step={0.01}
                     />
                   </FormControl>
@@ -102,7 +103,12 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                className="    text-whitef1"
+                variant={"outline"}
+              >
                 Save
               </Button>
             </div>

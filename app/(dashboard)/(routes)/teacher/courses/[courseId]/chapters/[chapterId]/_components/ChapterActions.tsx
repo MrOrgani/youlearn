@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 interface ChapterActionsProps {
@@ -62,11 +62,17 @@ export const ChapterActions = ({
         disabled={disabled || isLaoding}
         variant={"outline"}
         size={"sm"}
+        className="bg-background20 text-whitef1"
       >
         {isPublished ? "Unpublish" : "Publish"}
       </Button>
       <ConfirmModal onConfirm={onConfirmDelete}>
-        <Button disabled={isLaoding} onClick={() => {}} size={"sm"}>
+        <Button
+          disabled={isLaoding}
+          onClick={() => {}}
+          size={"sm"}
+          className="bg-red-500"
+        >
           <Trash className="h-4 w-4" />
         </Button>
       </ConfirmModal>

@@ -83,6 +83,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
                       disabled={isSubmitting}
                       placeholder="e.g. Culinary techniques"
                       {...field}
+                      className="bg-whitef1"
                     ></Input>
                   </FormControl>
                   <FormMessage />
@@ -90,7 +91,12 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                className="    text-whitef1"
+                variant={"outline"}
+              >
                 Save
               </Button>
             </div>

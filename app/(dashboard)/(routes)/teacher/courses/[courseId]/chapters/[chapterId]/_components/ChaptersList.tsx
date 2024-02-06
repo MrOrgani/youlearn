@@ -95,7 +95,9 @@ export const ChaptersList = ({
                     </div>
                     <div className="flex-1 px-2 py-3">{chapter.title}</div>
                     <div className="ml-auto flex items-center gap-x-2 pr-2">
-                      {chapter.isFree && <Badge>Free</Badge>}
+                      {chapter.isFree && (
+                        <Badge className=" bg-emerald-500">Free</Badge>
+                      )}
                       {chapter.isPublished ? (
                         <Badge className="bg-sky-700">Published</Badge>
                       ) : (

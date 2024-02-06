@@ -1,9 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
+import * as React from "react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -17,6 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 interface ComboboxProps {
   options: Array<{ value: string; label: string }>;
@@ -34,7 +34,7 @@ export const Combobox = ({ value, options, onChange }: ComboboxProps) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between "
+          className="w-full justify-between bg-whitef1"
         >
           {value
             ? options.find((option) => option.value === value)?.label
@@ -43,10 +43,10 @@ export const Combobox = ({ value, options, onChange }: ComboboxProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
-        <Command>
+        <Command className="bg-whitef1">
           <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup className="bg-whitef1">
             {options.map((option) => (
               <CommandItem
                 key={option.value}

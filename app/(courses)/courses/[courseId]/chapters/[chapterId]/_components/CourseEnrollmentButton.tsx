@@ -31,7 +31,7 @@ export const CourseEnrollmentButton = ({
     <Button
       onClick={handleEnroll}
       disabled={loading}
-      className="w-full md:w-auto"
+      className="w-full bg-background20 hover:text-black md:w-auto"
     >
       Get this course for {formatPrice(price)}
     </Button>

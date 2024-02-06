@@ -70,7 +70,9 @@ const ChapterPage = async ({
         </div>
         <div>
           <div className="flex flex-col items-center justify-between p-4 md:flex-row">
-            <h2 className="mb-2 text-2xl font-semibold">{chapter.title}</h2>
+            <h2 className="mb-2 text-2xl font-semibold text-whitef1">
+              {chapter.title}
+            </h2>
             {purchase ? (
               <CourseFinishedButton
                 isFinished={!!userProgress?.isCompleted}
@@ -90,7 +92,7 @@ const ChapterPage = async ({
             className="my-3 bg-background20"
           />
 
-          <div>
+          <div className=" text-whitef1">
             <Preview value={chapter.description ?? ""} />
           </div>
           {Boolean(attachements?.length) && (

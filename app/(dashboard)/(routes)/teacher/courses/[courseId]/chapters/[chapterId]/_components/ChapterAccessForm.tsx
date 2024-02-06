@@ -104,6 +104,7 @@ export const ChapterAccessForm = ({
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      style={{ backgroundColor: "black" }}
                     />
                   </FormControl>
                   <div className=" space-y-1 leading-none">
@@ -113,7 +114,12 @@ export const ChapterAccessForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                className=" text-whitef1 "
+                variant={"outline"}
+              >
                 Save
               </Button>
             </div>

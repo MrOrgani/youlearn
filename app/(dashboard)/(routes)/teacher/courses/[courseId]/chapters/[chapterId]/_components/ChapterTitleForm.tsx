@@ -90,6 +90,7 @@ export const ChapterTitleForm = ({
                     <Input
                       disabled={isSubmitting}
                       placeholder="e.g. Intro"
+                      className="bg-whitef1"
                       {...field}
                     ></Input>
                   </FormControl>
@@ -97,8 +98,13 @@ export const ChapterTitleForm = ({
                 </FormItem>
               )}
             />
-            <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+            <div className="flex items-center  gap-x-2 ">
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                className="    text-whitef1"
+                variant={"outline"}
+              >
                 Save
               </Button>
             </div>

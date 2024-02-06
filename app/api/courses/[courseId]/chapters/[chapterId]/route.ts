@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
-import { NextResponse } from "next/server";
 import Mux from "@mux/mux-node";
+import { NextResponse } from "next/server";
 
 const { Video } = new Mux(
   process.env.MUX_TOKEN_ID!,
@@ -13,6 +13,7 @@ export async function PATCH(
   { params }: { params: { courseId: string; chapterId: string } },
 ) {
   try {
+    console.log("PATCH", params);
     const { userId } = auth();
 
     if (!userId) {
@@ -27,6 +28,7 @@ export async function PATCH(
         userId,
       },
     });
+    console.log("PATCH isOwner", isOwner);
 
     if (!isOwner) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -41,7 +43,9 @@ export async function PATCH(
         ...values,
       },
     });
+    console.log("PATCH chapter", chapter);
 
+    console.log("PATCH values.videoUrl", values.videoUrl);
     if (values.videoUrl) {
       const existinVideo = await db.muxData.findFirst({
         where: {
@@ -49,6 +53,7 @@ export async function PATCH(
         },
       });
 
+      console.log("PATCH existinVideo", existinVideo);
       if (existinVideo) {
         if (await Video.Assets.get(existinVideo.assetId)) {
           await Video.Assets.del(existinVideo.assetId);
@@ -65,6 +70,7 @@ export async function PATCH(
         playback_policy: "public",
         test: false,
       });
+      console.log("PATCH video", video);
 
       await db.muxData.create({
         data: {
@@ -75,8 +81,10 @@ export async function PATCH(
       });
     }
 
+    console.log("PATCH video", chapter);
     return NextResponse.json(chapter);
   } catch (error) {
+    console.log("[Chapter_ID] error", error);
     return new NextResponse("Something went wrong", { status: 500 });
   }
 }
