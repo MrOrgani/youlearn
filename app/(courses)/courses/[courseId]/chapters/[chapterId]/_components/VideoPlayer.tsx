@@ -23,13 +23,9 @@ export const VideoPlayer = ({
   chapterId,
   courseId,
   isBlocked,
-  isCompleted,
-  isStarted,
   nextChapterId,
   playbackId,
-  prevChapterId,
   title,
-  videoUrl,
 }: VideoPlayerProps) => {
   const router = useRouter();
   const [readyToPlay, setReadyToPlay] = useState(false);

@@ -24,7 +24,6 @@ const ChapterPage = async ({
 
   const {
     chapter,
-    progress,
     nextChapterId,
     prevChapterId,
     muxData,

@@ -25,7 +25,7 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    for (let chapter of list) {
+    for (const chapter of list) {
       await db.chapter.update({
         where: {
           id: chapter.id,

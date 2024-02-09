@@ -14,7 +14,11 @@ export const CourseProgress = ({ value, size }: CourseProgressProps) => {
         value={value}
         barColor={value === 100 ? "bg-emerald-700" : "bg-[#FF0000]"}
       />
-      <p className={`mt-1 text-xl font-medium text-whitef1 `}>
+      <p
+        className={`mt-1 ${
+          size === "small" ? "text-sm" : "text-xl"
+        } font-medium text-whitef1 `}
+      >
         {Math.round(value)}%
       </p>
     </div>

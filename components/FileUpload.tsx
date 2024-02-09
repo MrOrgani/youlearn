@@ -2,9 +2,10 @@
 
 import toast from "react-hot-toast";
 
-import { UploadDropzone } from "@/lib/uploadthing";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
-import { auth, useAuth } from "@clerk/nextjs";
+import { UploadDropzone } from "@/lib/uploadthing";
+import { auth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 interface FileUploadProps {
   onChange: (url?: string) => void;
@@ -12,6 +13,10 @@ interface FileUploadProps {
 }
 
 export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
+  const { userId } = auth();
+  if (!userId) {
+    return redirect("/");
+  }
   return (
     <UploadDropzone
       endpoint={endpoint}

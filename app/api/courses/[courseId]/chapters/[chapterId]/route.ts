@@ -21,6 +21,7 @@ export async function PATCH(
     }
 
     const { isPublished, ...values } = await req.json();
+    isPublished;
 
     const isOwner = await db.course.findUnique({
       where: {

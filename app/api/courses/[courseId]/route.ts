@@ -77,12 +77,14 @@ export async function DELETE(
     }
 
     for (const chapter of course.chapters) {
-      await Video.Assets.del(chapter.muxData?.assetId!);
-      await db.muxData.delete({
-        where: {
-          id: chapter.muxData?.id,
-        },
-      });
+      if (chapter.muxData?.assetId) {
+        await Video.Assets.del(chapter.muxData?.assetId);
+        await db.muxData.delete({
+          where: {
+            id: chapter.muxData?.id,
+          },
+        });
+      }
     }
 
     const deletedCourse = await db.course.delete({
